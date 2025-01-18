@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        header, footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Data Analytics Dashboard</h1>
+    </header>
+    <main>
+        <div id="data-visualization"></div>
+    </main>
+    <footer>
+        <p>© 2025 Data Analytics App</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    displayData(data);
+                })
+                .catch(error => console.error('Error loading the data:', error));
+        });
+
+        function displayData(data) {
+            const visualization = document.getElementById('data-visualization');
+            data.forEach(item => {
+                const div = document.createElement('div');
+                div.textContent = `Name: ${item.name}, Value: ${item.value}`;
+                visualization.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
+
